@@ -35,9 +35,11 @@ var data2 = {id: 'list'};
 ```
 
 ## API
-### String.wrap(wrapper, data)
+### String.wrap(wrapper, data, callback)
 - wrapper (string)
-- data (object / array)
+- data (object / array) optional
+- callback (function) optional
 
-### String.insert(data)
+### String.insert(data, callback)
 - data (string / object / array)
+- callback (function) optional
