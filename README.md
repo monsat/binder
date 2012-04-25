@@ -1,7 +1,7 @@
 binder
 ======
 
-simple template engine for JavaScript.
+simple template for JavaScript.
 
 ## USAGE
 ### wrap / insert
@@ -12,9 +12,15 @@ simple template engine for JavaScript.
 // <li>text</li>
 'text'.wrap('<li></li>');
 '<li></li>'.insert('text');
+```
+
+```javascript
 // <li class="cls">text</li>
-'text'.wrap('<li class="cls"><!-- contents --></li>');
-'<li class="cls"><!-- contents --></li>'.insert('text');
+'text'.wrap('<li class="cls"><!-- $(.) --></li>');
+'<li class="cls"><!-- $(.) --></li>'.insert('text');
+// <li class="cls"><b>text</b></li>
+'<b>text</b>'.wrap('<li class="cls"><!-- $(_) --></li>');
+'<li class="cls"><!-- $(_) --></li>'.insert('<b>text</b>');
 ```
 
 ```javascript
@@ -26,14 +32,22 @@ var data = {one: 'a&b', two: '<b>text</b>'};
 ```
 
 ```javascript
-var data = [{body: 'a&b'}, {body: '<b>text</b>'}];
-var data2 = {id: 'list'};
+var data = [{body: 'one'}, {body: 'two'}];
 // <li>one</li><li>two</li>
 '<li><!-- $(.body) --></li>'.insert(data);
-// <ul id="list"><li>one</li><li>two</li></ul>
-'<li><!-- $(.body) --></li>'.insert(data).wrap('<ul id="<!-- $(.id) -->"><!-- contents --></ul>', data2);
 ```
 
+```javascript
+var data = ['one', 'two'];
+// <li>one</li><li>two</li>
+'<li><!-- $(.) --></li>'.insert(data);
+```
+
+```javascript
+var data = {id: 'list'};
+// <ul id="list"><li>one</li><li>two</li></ul>
+'<li><!-- $(.body) --></li>'.insert(data).wrap('<ul id="<!-- $(.id) -->"><!-- $(.) --></ul>', data);
+```
 ## API
 ### String.wrap(wrapper, data, callback)
 - wrapper (string)
