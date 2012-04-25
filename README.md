@@ -33,3 +33,11 @@ var data2 = {id: 'list'};
 // <ul id="list"><li>one</li><li>two</li></ul>
 '<li><!-- $(.body) --></li>'.insert(data).wrap('<ul id="<!-- $(.id) -->"><!-- contents --></ul>', data2);
 ```
+
+## API
+### String.wrap(wrapper, data)
+- wrapper (string)
+- data (object / array)
+
+### String.insert(data)
+- data (string / object / array)
